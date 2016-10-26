@@ -23,24 +23,27 @@ var books = [
   }
 ];
 
-bookRouter.route('/')
-  .get(function(req, res) {
-    res.render('books',{
-      title: 'Books',
-      nav: [{
-        Link: '/Books',
-        Text: 'Books'
-      }, {
-        Link: '/Authors',
-        Text: 'Authors'
-      }],
-      books: books
+var router = function(nav) {
+  bookRouter.route('/')
+    .get(function(req, res) {
+      res.render('bookListView',{
+        title: 'Books',
+        nav: nav,
+        books: books
+      });
     });
-  });
 
-bookRouter.route('/single')
-  .get(function(req, res) {
-    res.send('Hello single book');
-  });
+  bookRouter.route('/:id')
+    .get(function(req, res) {
+      var id = req.params.id;
+      res.render('bookView', {
+        title: 'Books',
+        nav: nav,
+        book: books[id]
+      });
+    });
 
-module.exports = bookRouter;
+  return bookRouter;
+};
+
+module.exports = router;
