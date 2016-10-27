@@ -29,7 +29,7 @@ var router = function (nav) {
       var url = 'mongodb://localhost:27017/libraryApp';
       mongodb.connect(url, function (err, db) {
         var collection = db.collection('books');
-        collection.insertMany(books, function(err, results){
+        collection.insertMany(books, function(err, results) {
           res.send(results);
           db.close();
         });
