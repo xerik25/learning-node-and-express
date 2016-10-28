@@ -7,12 +7,14 @@ var books = [
     title: 'book 1',
     genre: 'genre 1',
     author: 'author 1',
+    bookId: 656,
     read: false
   },
   {
     title: 'book 2',
     genre: 'genre 2',
     author: 'author 2',
+    bookId: 24280,
     read: false
   },
   {
